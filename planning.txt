@@ -1,1 +1,30 @@
 [X] Initial setup (html, css, js + planning.txt)
+
+[X] Create classes: Game, Player, Obstacles, Gifts
+
+[X] Add to Game: size, basic styling, functionality (start, eventlistener)
+
+[ ] Add to Player: size/positioning, domElement(), movement (event), preventing player to go outside
+
+[ ] Add to Obstacles: size/positioning, movement, removal of obstacles outside view, interval and random positioning
+
+[ ] Impact detection and game over
+
+[ ] Add graphics: player character, obstacles character
+
+[ ] Add graphics: intro screen (+logo), game over screen, from right to left moving middle-background & background (perhaps looping?)
+
+
+//////// Bonus after MVP is done:
+
+
+[ ] Player: shooting functionality + impact detection & removal of obstacles from shooting
+
+[ ] Tweak for diagonal movement for Player. (Right+Up / Left + Down and so on..)
+
+[ ] Implement sound (music & sound effects)
+
+
+//////// Bonus on top:
+
+[ ] Add lives and another level (or levels...)
