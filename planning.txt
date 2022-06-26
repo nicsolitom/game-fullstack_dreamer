@@ -1,0 +1,1 @@
+[X] Initial setup (html, css, js + planning.txt)
