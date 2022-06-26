@@ -35,31 +35,61 @@ class Player {
     this.positionY = 45;
     this.width = 12;
     this.height = 10;
-    this.domElement = null;
+    this.playerElement = null;
     this.createDomElement();
   }
   createDomElement() {
-    this.domElement = document.createElement("div");
-    this.domElement.className = "player";
-    this.domElement.style.left = this.positionX + "%";
-    this.domElement.style.bottom = this.positionY + "%";
-    this.domElement.style.width = this.width + "%";
-    this.domElement.style.height = this.height + "%";
+    this.playerElement = document.createElement("div");
+    this.playerElement.className = "player";
+    this.playerElement.style.left = this.positionX + "%";
+    this.playerElement.style.bottom = this.positionY + "%";
+    this.playerElement.style.width = this.width + "%";
+    this.playerElement.style.height = this.height + "%";
 
     const gameBoard = document.getElementById("game");
-    gameBoard.appendChild(this.domElement);
+    gameBoard.appendChild(this.playerElement);
   }
   moveUp() {
-    console.log("up");
-  }
-  moveRight() {
-    console.log("right");
+    switch (this.positionY) {
+      case 90:
+        break;
+      default:
+        this.positionY += 5;
+        this.playerElement.style.bottom = this.positionY + "%";
+        break;
+    }
   }
   moveDown() {
-    console.log("down");
+    switch (this.positionY) {
+        case 0:
+            break;
+        default:
+            this.positionY -= 5;
+            this.playerElement.style.bottom = this.positionY + "%";
+            break;
+    }
+  }
+  moveRight() {
+    switch (this.positionX) {
+        case 80:
+            break;
+        default:
+            this.positionX += 5;
+            this.playerElement.style.left = this.positionX + "%"; 
+    }
+    // this.positionX += 5;
+    // this.playerElement.style.left = this.positionX + "%";
   }
   moveLeft() {
-    console.log("left");
+    switch (this.positionX) {
+        case 0:
+            break;
+        default:
+            this.positionX -= 5;
+            this.playerElement.style.left = this.positionX + "%";
+    }
+    // this.positionX -= 5;
+    // this.playerElement.style.left = this.positionX + "%";
   }
 }
 

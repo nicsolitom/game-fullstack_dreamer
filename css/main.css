@@ -21,4 +21,5 @@ body {
 .player {
     position: absolute;
     background-color: green;
+    /* transition: 0.2s ease-out; */
 }

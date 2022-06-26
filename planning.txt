@@ -4,7 +4,7 @@
 
 [X] Add to Game: size, basic styling, functionality (start, eventlistener)
 
-[ ] Add to Player: size/positioning, domElement(), movement (event), preventing player to go outside
+[X] Add to Player: size/positioning, domElement(), movement (event), preventing player to go outside
 
 [ ] Add to Obstacles: size/positioning, movement, removal of obstacles outside view, interval and random positioning
 
