@@ -1,13 +1,14 @@
 class Game {
   constructor() {
     this.time = 0;
-    this.player = null;
     this.obstaclesArr = [];
     this.giftsArr = [];
   }
   start() {
     this.player = new Player();
     this.movementEventListeners();
+
+    this.obstacle = new Obstacle();
   }
   movementEventListeners() {
     document.addEventListener("keydown", (event) => {
@@ -26,6 +27,9 @@ class Game {
           break;
       }
     });
+    setInterval(() => {
+      this.obstacle.moveLeft();
+    }, 200);
   }
 }
 
@@ -61,39 +65,68 @@ class Player {
   }
   moveDown() {
     switch (this.positionY) {
-        case 0:
-            break;
-        default:
-            this.positionY -= 5;
-            this.playerElement.style.bottom = this.positionY + "%";
-            break;
+      case 0:
+        break;
+      default:
+        this.positionY -= 5;
+        this.playerElement.style.bottom = this.positionY + "%";
+        break;
     }
   }
   moveRight() {
     switch (this.positionX) {
-        case 80:
-            break;
-        default:
-            this.positionX += 5;
-            this.playerElement.style.left = this.positionX + "%"; 
+      case 85:
+        break;
+      default:
+        this.positionX += 5;
+        this.playerElement.style.left = this.positionX + "%";
+        break;
     }
-    // this.positionX += 5;
-    // this.playerElement.style.left = this.positionX + "%";
   }
   moveLeft() {
     switch (this.positionX) {
-        case 0:
-            break;
-        default:
-            this.positionX -= 5;
-            this.playerElement.style.left = this.positionX + "%";
+      case 0:
+        break;
+      default:
+        this.positionX -= 5;
+        this.playerElement.style.left = this.positionX + "%";
+        break;
     }
-    // this.positionX -= 5;
-    // this.playerElement.style.left = this.positionX + "%";
   }
 }
 
-class Obstacles {}
+class Obstacle {
+  constructor() {
+    this.positionX = 101;
+    this.positionY = 45;
+    this.width = 10;
+    this.height = 10;
+    this.obstacleElement = null;
+    this.createDomElement();
+  }
+  createDomElement() {
+    this.obstacleElement = document.createElement("div");
+    this.obstacleElement.className = "obstacle";
+    this.obstacleElement.style.left = this.positionX + "%";
+    this.obstacleElement.style.bottom = this.positionY + "%";
+    this.obstacleElement.style.width = this.width + "%";
+    this.obstacleElement.style.height = this.height + "%";
+
+    const gameBoard = document.getElementById("game");
+    gameBoard.appendChild(this.obstacleElement);
+  }
+  moveLeft() {
+    switch (true) {
+      case this.positionX <= -10:
+        this.obstacleElement.remove();
+        break;
+      default:
+        this.positionX -= 5;
+        this.obstacleElement.style.left = this.positionX + "%";
+        break;
+    }
+  }
+}
 
 class Gifts {}
 
