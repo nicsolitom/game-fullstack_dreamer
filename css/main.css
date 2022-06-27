@@ -1,5 +1,4 @@
 body {
-    background-color: rgb(63, 62, 124);
 }
 
 /* #game-wrapper {
@@ -9,17 +8,20 @@ body {
 
 #game {
     position: relative;
-    width: 80vw;
-    height: 50vw;
+    overflow: hidden;
+    width: 100vw;
+    height: 60vw;
     background-size: cover;
     background-position: center;
     margin: auto;
     border: 1px red solid;
+    background-color: rgb(63, 62, 124);
 }
 
 .player {
     position: absolute;
     background-color: green;
+    transition: .2s;
 }
 
 .obstacle {

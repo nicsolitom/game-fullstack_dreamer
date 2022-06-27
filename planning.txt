@@ -6,9 +6,11 @@
 
 [X] Add to Player: size/positioning, domElement(), movement (event), preventing player to go outside
 
-[ ] Add to Obstacles: size/positioning, movement, removal of obstacles outside view, interval and random positioning
+[X] Add to Obstacles: size/positioning, movement, removal of obstacles outside view, interval and random positioning
 
 [ ] Impact detection and game over
+
+[ ] Player: shooting functionality + impact detection+removal of obstacles from shooting
 
 [ ] Add graphics: player character, obstacles character
 
@@ -17,8 +19,7 @@
 
 //////// Bonus after MVP is done:
 
-
-[ ] Player: shooting functionality + impact detection & removal of obstacles from shooting
+[ ] Create a more complex obstacle interval
 
 [ ] Tweak for diagonal movement for Player. (Right+Up / Left + Down and so on..)
 

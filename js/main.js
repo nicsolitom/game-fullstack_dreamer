@@ -8,7 +8,18 @@ class Game {
     this.player = new Player();
     this.movementEventListeners();
 
-    this.obstacle = new Obstacle();
+    setInterval(() => {
+      const newObstacle = new Obstacle();
+      this.obstaclesArr.push(newObstacle);
+
+      this.time++;
+    }, 1200);
+
+    setInterval(() => {
+      this.obstaclesArr.forEach((obstacle) => {
+        obstacle.moveLeft();
+      });
+    }, 200);
   }
   movementEventListeners() {
     document.addEventListener("keydown", (event) => {
@@ -27,9 +38,6 @@ class Game {
           break;
       }
     });
-    setInterval(() => {
-      this.obstacle.moveLeft();
-    }, 200);
   }
 }
 
@@ -37,7 +45,7 @@ class Player {
   constructor() {
     this.positionX = 5;
     this.positionY = 45;
-    this.width = 12;
+    this.width = 10;
     this.height = 10;
     this.playerElement = null;
     this.createDomElement();
@@ -97,9 +105,9 @@ class Player {
 
 class Obstacle {
   constructor() {
-    this.positionX = 101;
-    this.positionY = 45;
-    this.width = 10;
+    this.positionX = 110;
+    this.positionY = Math.floor(Math.random() * (90 - 0)) + 0;
+    this.width = 8;
     this.height = 10;
     this.obstacleElement = null;
     this.createDomElement();
