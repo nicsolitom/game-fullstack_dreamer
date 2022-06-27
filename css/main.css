@@ -1,5 +1,9 @@
-body {
-}
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Roboto:wght@300;400&display=swap');
+/* 
+font-family: 'Comfortaa', cursive;
+font-family: 'Roboto', sans-serif; */
+
+/* body {} */
 
 /* #game-wrapper {
     width: 90vw;
@@ -14,8 +18,35 @@ body {
     background-size: cover;
     background-position: center;
     margin: auto;
-    border: 1px red solid;
-    background-color: rgb(63, 62, 124);
+    /* border: 1px red solid; */
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.intro {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    color: white;
+}
+
+.intro > h1 {
+    font-size: 2em;
+    margin-bottom: .4rem;
+}
+
+.intro > p {
+    font-size: 1rem;
+}
+
+.obstacle {
+    position: absolute;
+    background-color: blueviolet;
+    transition: .5s;
 }
 
 .player {
@@ -24,8 +55,6 @@ body {
     transition: .2s;
 }
 
-.obstacle {
-    position: absolute;
-    background-color: blueviolet;
+#level-one-bg {
     transition: .5s;
 }

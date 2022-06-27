@@ -8,24 +8,45 @@
 
 [X] Add to Obstacles: size/positioning, movement, removal of obstacles outside view, interval and random positioning
 
-[ ] Impact detection and game over
+[X] Impact detection
 
-[ ] Player: shooting functionality + impact detection+removal of obstacles from shooting
+- Add graphics: 
+[X] intro screen (+logo)
+[X] from right to left moving background
 
-[ ] Add graphics: player character, obstacles character
+[ ] Game over (stop game, show gameOver() )
 
-[ ] Add graphics: intro screen (+logo), game over screen, from right to left moving middle-background & background (perhaps looping?)
+[ ] player character design, obstacles character design
+
+
+Gifts: 
+[ ] add Gifts class: 
+> fires after x amount of obstacles. 
+Gifts can be: 
+- fireballs for shooting 
+- time-based 'superpower' (makeover of character with hightened speed of movement and automatic removal of impacted obstacle without player damage)
+
+[ ] Player: shooting functionality 
++ impact detection and removal of obstacles from impact from shot
+
+
 
 
 //////// Bonus after MVP is done:
 
+[ ] gifts for incresing 
+
+[ ] Add 'luciditybar' + pillows (lives)
+
 [ ] Create a more complex obstacle interval
 
-[ ] Tweak for diagonal movement for Player. (Right+Up / Left + Down and so on..)
+[ ] Tweak for diagonal movement for Player. 
+(Right+Up / Left + Down and so on..)
 
 [ ] Implement sound (music & sound effects)
 
 
 //////// Bonus on top:
 
-[ ] Add lives and another level (or levels...)
+
+[ ] Add more levels...
