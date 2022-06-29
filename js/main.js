@@ -137,6 +137,11 @@ class Game {
     this.gameOverElement.appendChild(this.gameOverText);
 
     // Implement to remove multiple eventlisteners on top of eachother: 
+
+    // document.removeEventListener("keydown", "ArrowUp");
+    // document.removeEventListener("keydown", "ArrowRight");
+    // document.removeEventListener("keydown", "ArrowDown");
+    // document.removeEventListener("keydown", "ArrowLeft");
     // document.removeEventListener("keydown", (event) => {
       
     // }, true)

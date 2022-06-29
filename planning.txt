@@ -16,7 +16,6 @@
 
 [ ] Game over (stop game, show gameOver() )
 
-[ ] player character design, obstacles character design
 
 
 - Gifts: 
@@ -29,6 +28,7 @@ Gifts can be:
 [ ] time-based 'superpower' (makeover of character with hightened speed of movement and automatic removal of impacted obstacle without player damage)
 
 
+[ ] player character design, obstacles character design
 
 //////// Bonus after MVP is done:
 
