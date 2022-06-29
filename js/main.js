@@ -136,24 +136,13 @@ class Game {
     this.gameOverText.innerText = "< press space to induce a new lucid dream >";
     this.gameOverElement.appendChild(this.gameOverText);
 
-    // Implement to remove multiple eventlisteners on top of eachother: 
-
-    // document.removeEventListener("keydown", "ArrowUp");
-    // document.removeEventListener("keydown", "ArrowRight");
-    // document.removeEventListener("keydown", "ArrowDown");
-    // document.removeEventListener("keydown", "ArrowLeft");
-    // document.removeEventListener("keydown", (event) => {
-      
-    // }, true)
-
     const gameBoard = document.getElementById("game");
     gameBoard.appendChild(this.gameOverElement);
   }
 
   restart(player) {
     if (this.end === true) {
-      this.gameOverElement.remove();
-      this.start();
+      location.reload();
     } else if (this.end === false) {
       this.player.shoot(player);
     }
