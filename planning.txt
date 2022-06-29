@@ -19,22 +19,18 @@
 [ ] player character design, obstacles character design
 
 
-Gifts: 
+- Gifts: 
 [ ] add Gifts class: 
 > fires after x amount of obstacles. 
 Gifts can be: 
-- fireballs for shooting 
-- time-based 'superpower' (makeover of character with hightened speed of movement and automatic removal of impacted obstacle without player damage)
-
-[ ] Player: shooting functionality 
+[ ] fireballs for shooting. 
 + impact detection and removal of obstacles from impact from shot
 
+[ ] time-based 'superpower' (makeover of character with hightened speed of movement and automatic removal of impacted obstacle without player damage)
 
 
 
 //////// Bonus after MVP is done:
-
-[ ] gifts for incresing 
 
 [ ] Add 'luciditybar' + pillows (lives)
 

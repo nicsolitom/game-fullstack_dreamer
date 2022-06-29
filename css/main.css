@@ -3,12 +3,10 @@
 font-family: 'Comfortaa', cursive;
 font-family: 'Roboto', sans-serif; */
 
-/* body {} */
+body {
+    
+}
 
-/* #game-wrapper {
-    width: 90vw;
-    margin: 20px auto;
-} */
 
 #game {
     position: relative;
@@ -18,7 +16,6 @@ font-family: 'Roboto', sans-serif; */
     background-size: cover;
     background-position: center;
     margin: auto;
-    /* border: 1px red solid; */
 }
 
 .intro {
@@ -26,9 +23,6 @@ font-family: 'Roboto', sans-serif; */
     flex-direction: column;
     justify-content: center;
     text-align: center;
-}
-
-.intro {
     font-family: 'Comfortaa', cursive;
     font-weight: 700;
     color: white;
@@ -36,11 +30,15 @@ font-family: 'Roboto', sans-serif; */
 
 .intro > h1 {
     font-size: 2em;
-    margin-bottom: .4rem;
+    margin-bottom: 1rem;
 }
 
 .intro > p {
     font-size: 1rem;
+}
+
+.intro > p#press-start {
+    margin-top: 5rem;
 }
 
 .obstacle {
@@ -57,4 +55,26 @@ font-family: 'Roboto', sans-serif; */
 
 #level-one-bg {
     transition: .5s;
+}
+
+.game-over {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    justify-content: center;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    color: white;
+}
+
+.game-over > h1 {
+    font-size: 2em;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+}
+
+.game-over > p {
+    font-size: 1rem;
+    margin-right: 2rem;
 }

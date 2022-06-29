@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     this.time = 0;
-    this.stop = false;
+    this.end = false;
     this.obstaclesArr = [];
     this.giftsArr = [];
   }
@@ -16,39 +16,56 @@ class Game {
     this.introElement.style.backgroundPosition = "center";
 
     this.introHeader = document.createElement("h1");
-    this.introHeader.innerHTML = "Fullstack <br /> Dreamer";
+    this.introHeader.innerHTML = "Fullstack Dreamer";
     this.introElement.appendChild(this.introHeader);
 
-    this.introText = document.createElement("p");
-    this.introText.innerText = "< press space to start >";
-    this.introElement.appendChild(this.introText);
+    this.introText1 = document.createElement("p");
+    this.introText1.innerText = "A skilled dreamer";
+    this.introElement.appendChild(this.introText1);
+
+    this.introText2 = document.createElement("p");
+    this.introText2.innerText = "only begins with flying...";
+    this.introElement.appendChild(this.introText2);
+    
+    this.introText3 = document.createElement("p");
+    this.introText3.id = "press-start";
+    this.introText3.innerText = "< press space to start >";
+    this.introElement.appendChild(this.introText3);
 
     const gameBoard = document.getElementById("game");
     gameBoard.appendChild(this.introElement);
-    
-    let counter = true;
-    
-    const introEventListen = document.addEventListener("keydown", (event) => {
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
         switch (event.key) {
           case " ":
-        
             this.introElement.remove();
             game.start();
             break;
-          }
-        },{once : true});
-      }
-  
+        }
+      },
+      { once: true }
+    );
+  }
+
   start() {
+    this.time = 0;
+    this.end = false;
+    this.obstaclesArr = [];
+    this.giftsArr = [];
+    this.player = null;
     this.positionX = 0;
+
     this.levelOneBg = document.createElement("div");
     this.levelOneBg.id = "level-one-bg";
     this.levelOneBg.style.position = "absolute";
     this.levelOneBg.style.height = "100%";
-    this.levelOneBg.style.width = "1000%";
+    this.levelOneBg.style.width = "2000%";
     this.levelOneBg.style.left = this.positionX + "%";
     this.levelOneBg.style.background = "url('../img/mysterious_land.jpg')";
     this.levelOneBg.style.backgroundSize = "contain";
+    this.levelOneBg.style.backgroundRepeat = "no-repeat";
 
     const gameBoard = document.getElementById("game");
     gameBoard.appendChild(this.levelOneBg);
@@ -56,8 +73,7 @@ class Game {
     const moveBgOne = setInterval(() => {
       this.positionX -= 1;
       this.levelOneBg.style.left = this.positionX + "%";
-    }, 100)
-
+    }, 100);
 
     this.player = new Player();
     this.movementEventListeners();
@@ -67,7 +83,6 @@ class Game {
       this.obstaclesArr.push(newObstacle);
 
       this.time++;
-      // console.log("TIME: ", this.time);
     }, 1200);
 
     const moveObstacle = setInterval(() => {
@@ -84,11 +99,61 @@ class Game {
           this.player.positionY < obstacle.positionY + obstacle.height &&
           this.player.height + this.player.positionY > obstacle.positionY
         ) {
-          console.log("Game Over");
+          this.gameOver();
+
+          clearInterval(addObstacle);
+          clearInterval(moveObstacle);
+          clearInterval(moveBgOne);
+
+          this.player.playerElement.remove();
+          this.levelOneBg.remove();
+          this.obstaclesArr.forEach((obstacle) => {
+            obstacle.obstacleElement.remove();
+          });
+
+          clearInterval(impactObstacle);
         }
       });
     }, 50);
   }
+
+  gameOver() {
+    this.end = true;
+
+    this.gameOverElement = document.createElement("div");
+    this.gameOverElement.className = "game-over";
+    this.gameOverElement.style.width = "100%";
+    this.gameOverElement.style.height = "100%";
+    this.gameOverElement.style.background = "url('img/earth-3391040.jpeg')";
+    this.gameOverElement.style.backgroundSize = "cover";
+    this.gameOverElement.style.backgroundPosition = "center";
+
+    this.gameOverHeader = document.createElement("h1");
+    this.gameOverHeader.innerHTML = "Oh no!<br />You woke up!<br/>";
+    this.gameOverElement.appendChild(this.gameOverHeader);
+
+    this.gameOverText = document.createElement("p");
+    this.gameOverText.innerText = "< press space to induce a new lucid dream >";
+    this.gameOverElement.appendChild(this.gameOverText);
+
+    // Implement to remove multiple eventlisteners on top of eachother: 
+    // document.removeEventListener("keydown", (event) => {
+      
+    // }, true)
+
+    const gameBoard = document.getElementById("game");
+    gameBoard.appendChild(this.gameOverElement);
+  }
+
+  restart(player) {
+    if (this.end === true) {
+      this.gameOverElement.remove();
+      this.start();
+    } else if (this.end === false) {
+      this.player.shoot(player);
+    }
+  }
+
   movementEventListeners() {
     document.addEventListener("keydown", (event) => {
       switch (event.key) {
@@ -105,7 +170,7 @@ class Game {
           this.player.moveLeft();
           break;
         case " ":
-          console.log("spacebar");
+          this.restart(this.player);
           break;
       }
     });
@@ -171,6 +236,9 @@ class Player {
         this.playerElement.style.left = this.positionX + "%";
         break;
     }
+  }
+  shoot() {
+    console.log("shoot()");
   }
 }
 
