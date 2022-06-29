@@ -11,7 +11,7 @@ class Game {
     this.introElement.className = "intro";
     this.introElement.style.width = "100%";
     this.introElement.style.height = "100%";
-    this.introElement.style.background = "url('/img/the_unknown.png')";
+    this.introElement.style.background = "url('./img/the_unknown.png')";
     this.introElement.style.backgroundSize = "cover";
     this.introElement.style.backgroundPosition = "center";
 
@@ -63,7 +63,7 @@ class Game {
     this.levelOneBg.style.height = "100%";
     this.levelOneBg.style.width = "2000%";
     this.levelOneBg.style.left = this.positionX + "%";
-    this.levelOneBg.style.background = "url('/img/mysterious_land.jpg')";
+    this.levelOneBg.style.background = "url('./img/mysterious_land.jpg')";
     this.levelOneBg.style.backgroundSize = "contain";
     this.levelOneBg.style.backgroundRepeat = "no-repeat";
 
@@ -124,7 +124,7 @@ class Game {
     this.gameOverElement.className = "game-over";
     this.gameOverElement.style.width = "100%";
     this.gameOverElement.style.height = "100%";
-    this.gameOverElement.style.background = "url('/img/earth-3391040.jpeg')";
+    this.gameOverElement.style.background = "url('./img/earth-3391040.jpeg')";
     this.gameOverElement.style.backgroundSize = "cover";
     this.gameOverElement.style.backgroundPosition = "center";
 
