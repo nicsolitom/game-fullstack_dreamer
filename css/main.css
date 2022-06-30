@@ -15,7 +15,7 @@ font-family: 'Titan One', cursive;
   position: relative;
   overflow: hidden;
   width: 100vw;
-  height: 60vw;
+  height: 100vh;
   background-size: cover;
   background-position: center;
   margin: auto;
@@ -85,13 +85,19 @@ font-family: 'Titan One', cursive;
     background-color: aqua;
 }
 
-.obstacle {
+.obstacle,
+.gift {
     position: absolute;
     transition: 0.5s;
     overflow: hidden;
 }
 
-.obstacle-pic {
+.gift {
+  /* background-color: green; */
+}
+
+.obstacle-pic,
+.gift-pic {
     width: 100%;
     height: 100%;
     

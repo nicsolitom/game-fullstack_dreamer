@@ -70,6 +70,7 @@ class Game {
     this.end = false;
     this.obstaclesArr = [];
     this.giftsArr = [];
+    this.lucidity = 0;
     this.player = null;
     this.positionX = 0;
 
@@ -100,10 +101,21 @@ class Game {
 
       this.time++;
     }, 1200);
+   
+    const addGift = setInterval(() => {
+      const newGift = new Gift();
+      this.giftsArr.push(newGift);
+    }, 1200);
 
     const moveObstacle = setInterval(() => {
       this.obstaclesArr.forEach((obstacle) => {
         obstacle.moveLeft();
+      });
+    }, 200);
+
+    const moveGift = setInterval(() => {
+      this.giftsArr.forEach((gift) => {
+        gift.moveLeft();
       });
     }, 200);
 
@@ -119,6 +131,7 @@ class Game {
 
           clearInterval(addObstacle);
           clearInterval(moveObstacle);
+          clearInterval(moveGift);
           clearInterval(moveBgOne);
 
           this.player.playerElement.remove();
@@ -126,8 +139,27 @@ class Game {
           this.obstaclesArr.forEach((obstacle) => {
             obstacle.obstacleElement.remove();
           });
+          this.giftsArr.forEach((gift) => {
+            gift.giftElement.remove();
+          });
 
           clearInterval(impactObstacle);
+        }
+      });
+    }, 50);
+
+
+    const impactGift = setInterval(() => {
+      this.giftsArr.forEach((gift) => {
+        if (
+          this.player.positionX < gift.positionX + gift.width &&
+          this.player.positionX + this.player.width > gift.positionX &&
+          this.player.positionY < gift.positionY + gift.height &&
+          this.player.height + this.player.positionY > gift.positionY
+        ) {
+          this.lucidity += 600;
+          gift.giftElement.remove();
+          
         }
       });
     }, 50);
@@ -162,7 +194,7 @@ class Game {
     this.dreamAgain = document.createElement("div");
     this.dreamAgain.id = "restart-game-wrapper";
     this.dreamAgain.innerHTML =
-      '<button id="restart-game-btn" type="button" onclick="window.location.reload()">RESTART</button>';
+      '<button id="restart-game-btn" type="button" onclick="window.location.reload()">DREAM AGAIN</button>';
     this.gameOverElement.appendChild(this.dreamAgain);
 
     const gameBoard = document.getElementById("game");
@@ -354,7 +386,57 @@ class Obstacle {
   }
 }
 
-class Gifts {}
+class Gift {
+  constructor() {
+    this.positionX = 110;
+    this.positionY = Math.floor(Math.random() * (90 - 0)) + 0;
+    this.width = 7;
+    this.height = 10;
+    this.giftElement = null;
+    this.createDomElement();
+  }
+  createDomElement() {
+    this.giftElement = document.createElement("div");
+    this.giftElement.className = "gift";
+    this.giftElement.style.left = this.positionX + "%";
+    this.giftElement.style.bottom = this.positionY + "%";
+    this.giftElement.style.width = this.width + "%";
+    this.giftElement.style.height = this.height + "%";
+
+    this.giftPic = document.createElement("img");
+
+    let randomGift = Math.floor(Math.random() * (4 - 1)) + 1;
+    if (randomGift === 1) {
+      this.giftPic.src = "./img/candies.png";
+    } else if (randomGift === 2) {
+      this.giftPic.src = "./img/cotton-candy.png";
+    } else if (randomGift === 3) {
+      this.giftPic.src = "./img/rainbow.png";
+    } else if (randomGift === 4) {
+      this.giftPic.src = "./img/star.png";
+    } else if (randomGift === 5) {
+      this.giftPic.src = "./img/unicorn.png";
+    }
+    this.giftPic.className = "gift-pic";
+    this.giftPic.style.width = this.giftPicWidth + "%";
+    this.giftPic.style.heigth = "auto";
+    this.giftElement.appendChild(this.giftPic);
+
+    const gameBoard = document.getElementById("game");
+    gameBoard.appendChild(this.giftElement);
+  }
+  moveLeft() {
+    switch (true) {
+      case this.positionX <= -10:
+        this.giftElement.remove();
+        break;
+      default:
+        this.positionX -= 5;
+        this.giftElement.style.left = this.positionX + "%";
+        break;
+    }
+  }
+}
 
 const game = new Game();
 game.intro();
