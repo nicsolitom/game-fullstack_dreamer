@@ -26,16 +26,26 @@ class Game {
     this.introText.innerHTML =
       "A skilled dreamer<br />only begins with flying...";
     this.introElement.appendChild(this.introText);
-    // TO BE FIXED:
+
     const clickToStart = () => {
+      this.dreamAgainBtn.remove();
       this.introElement.remove();
       game.start();
     };
-    ////////
     this.dreamAgain = document.createElement("div");
     this.dreamAgain.id = "start-game-wrapper";
-    this.dreamAgain.innerHTML =
-      '<button id="start-game-btn" type="button" onclick="clickToStart()">START DREAMING</button>';
+
+    this.dreamAgainBtn = document.createElement("button");
+    this.dreamAgainBtn.id = "start-game-btn";
+    this.dreamAgainBtn.type = "button";
+    this.dreamAgainBtn.innerText = "START DREAMING";
+
+    this.dreamAgainBtn.addEventListener("click", () => {
+      clickToStart();
+    });
+
+    this.dreamAgain.appendChild(this.dreamAgainBtn);
+
     this.introElement.appendChild(this.dreamAgain);
 
     const gameBoard = document.getElementById("game");
@@ -182,9 +192,10 @@ class Game {
         case "ArrowLeft":
           this.player.moveLeft();
           break;
-        case " ":
-          this.restart(this.player);
-          break;
+        // check for shooting function later on:
+        // case " ":
+        //   this.restart(this.player);
+        //   break;
       }
     });
   }
@@ -215,7 +226,6 @@ class Player {
     this.playerPic.style.width = this.playerPicWidth + "%";
     this.playerPic.style.width = "auto";
     this.playerElement.appendChild(this.playerPic);
-    // this.playerElement.innerHTLM = '<img src="./img/player.png" alt="" srcset="">';
 
     const gameBoard = document.getElementById("game");
     gameBoard.appendChild(this.playerElement);
@@ -261,10 +271,9 @@ class Player {
     }
   }
 
-  shoot() {
-    //
-  }
-  ///
+  shoot() {}
+
+  // Notes to self on Shooting function:
 
   // moveLeft() {
   //   switch (true) {
@@ -319,7 +328,7 @@ class Obstacle {
       this.obstaclePic.src = "./img/eye.png";
     } else if (randomObstacle === 2) {
       this.obstaclePic.src = "./img/ghost.png";
-    } else if (randomObstacle === 3) { 
+    } else if (randomObstacle === 3) {
       this.obstaclePic.src = "./img/spider.png";
     }
     this.obstaclePic.className = "obstacle-pic";
