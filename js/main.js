@@ -169,13 +169,13 @@ class Game {
     gameBoard.appendChild(this.gameOverElement);
   }
 
-  restart(player) {
-    if (this.end === true) {
-      window.location.reload();
-    } else if (this.end === false) {
-      this.player.shoot(player);
-    }
-  }
+  // restart(player) {
+  //   if (this.end === true) {
+  //     window.location.reload();
+  //   } else if (this.end === false) {
+  //     this.player.shoot(player);
+  //   }
+  // }
 
   movementEventListeners() {
     document.addEventListener("keydown", (event) => {
