@@ -192,7 +192,7 @@ class Game {
         case "ArrowLeft":
           this.player.moveLeft();
           break;
-        // check for shooting function later on:
+          // check for shooting function 
         // case " ":
         //   this.restart(this.player);
         //   break;
@@ -271,7 +271,9 @@ class Player {
     }
   }
 
-  shoot() {}
+  shoot() {
+
+  }
 
   // Notes to self on Shooting function:
 
