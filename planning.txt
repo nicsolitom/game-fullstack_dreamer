@@ -12,25 +12,33 @@
 
 - Add graphics: 
 [X] intro screen (+logo)
+
+
 [X] from right to left moving background
 
-[ ] Game over (stop game, show gameOver() )
 
+//////////
 
-
-- Gifts: 
-[ ] add Gifts class: 
-> fires after x amount of obstacles. 
-Gifts can be: 
-[ ] fireballs for shooting. 
+WORKING ON NOW: 
+[ ] shooter()
 + impact detection and removal of obstacles from impact from shot
 
-[ ] time-based 'superpower' (makeover of character with hightened speed of movement and automatic removal of impacted obstacle without player damage)
-
+[ ] Start Dreaming button
 
 [ ] player character design, obstacles character design
 
+[ ] Story-page before game begins with story + how to play
+
+[ ] Responsive design (intro + gameOver)
+//////////
+
+
+
+
 //////// Bonus after MVP is done:
+
+[ ] Gifts: 
+> fires after x amount of obstacles. 
 
 [ ] Add 'luciditybar' + pillows (lives)
 
@@ -41,8 +49,8 @@ Gifts can be:
 
 [ ] Implement sound (music & sound effects)
 
+[ ] time-based 'superpower' (makeover of character with hightened speed of movement and automatic removal of impacted obstacle without player damage)
 
 //////// Bonus on top:
 
-
-[ ] Add more levels...
+[ ] Add more levels... ;)

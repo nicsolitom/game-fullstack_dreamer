@@ -4,6 +4,7 @@ class Game {
     this.end = false;
     this.obstaclesArr = [];
     this.giftsArr = [];
+    this.shootArr = [];
   }
 
   intro() {
@@ -11,26 +12,31 @@ class Game {
     this.introElement.className = "intro";
     this.introElement.style.width = "100%";
     this.introElement.style.height = "100%";
-    this.introElement.style.background = "url('./img/the_unknown.png')";
+    this.introElement.style.background =
+      "url('./img/eclipse-1492818_1920.jpg')";
     this.introElement.style.backgroundSize = "cover";
     this.introElement.style.backgroundPosition = "center";
 
     this.introHeader = document.createElement("h1");
-    this.introHeader.innerHTML = "Fullstack Dreamer";
+    this.introHeader.innerHTML = "Fullstack<br />Dreamer";
     this.introElement.appendChild(this.introHeader);
 
-    this.introText1 = document.createElement("p");
-    this.introText1.innerText = "A skilled dreamer";
-    this.introElement.appendChild(this.introText1);
-
-    this.introText2 = document.createElement("p");
-    this.introText2.innerText = "only begins with flying...";
-    this.introElement.appendChild(this.introText2);
-    
-    this.introText3 = document.createElement("p");
-    this.introText3.id = "press-start";
-    this.introText3.innerText = "< press space to start >";
-    this.introElement.appendChild(this.introText3);
+    this.introText = document.createElement("p");
+    this.introText.id = "intro-text";
+    this.introText.innerHTML =
+      "A skilled dreamer<br />only begins with flying...";
+    this.introElement.appendChild(this.introText);
+    // TO BE FIXED:
+    const clickToStart = () => {
+      this.introElement.remove();
+      game.start();
+    };
+    ////////
+    this.dreamAgain = document.createElement("div");
+    this.dreamAgain.id = "start-game-wrapper";
+    this.dreamAgain.innerHTML =
+      '<button id="start-game-btn" type="button" onclick="clickToStart()">START DREAMING</button>';
+    this.introElement.appendChild(this.dreamAgain);
 
     const gameBoard = document.getElementById("game");
     gameBoard.appendChild(this.introElement);
@@ -115,6 +121,12 @@ class Game {
         }
       });
     }, 50);
+
+    const moveShoot = setInterval(() => {
+      this.shootArr.forEach((shoot) => {
+        shoot.moveRight();
+      });
+    }, 200);
   }
 
   gameOver() {
@@ -133,8 +145,15 @@ class Game {
     this.gameOverElement.appendChild(this.gameOverHeader);
 
     this.gameOverText = document.createElement("p");
-    this.gameOverText.innerText = "< press space to induce a new lucid dream >";
+    this.gameOverText.innerHTML =
+      "It is possible to induce lucid dreams<br />during being awake...";
     this.gameOverElement.appendChild(this.gameOverText);
+
+    this.dreamAgain = document.createElement("div");
+    this.dreamAgain.id = "restart-game-wrapper";
+    this.dreamAgain.innerHTML =
+      '<button id="restart-game-btn" type="button" onclick="window.location.reload()">RESTART</button>';
+    this.gameOverElement.appendChild(this.dreamAgain);
 
     const gameBoard = document.getElementById("game");
     gameBoard.appendChild(this.gameOverElement);
@@ -142,7 +161,7 @@ class Game {
 
   restart(player) {
     if (this.end === true) {
-      location.reload();
+      window.location.reload();
     } else if (this.end === false) {
       this.player.shoot(player);
     }
@@ -177,7 +196,10 @@ class Player {
     this.positionY = 45;
     this.width = 10;
     this.height = 10;
+    this.playerPicWidth = 10;
+    this.playerPicHeight = 0;
     this.playerElement = null;
+    this.shootElement = null;
     this.createDomElement();
   }
   createDomElement() {
@@ -187,6 +209,13 @@ class Player {
     this.playerElement.style.bottom = this.positionY + "%";
     this.playerElement.style.width = this.width + "%";
     this.playerElement.style.height = this.height + "%";
+
+    this.playerPic = document.createElement("img");
+    this.playerPic.src = "./img/player_small.png";
+    this.playerPic.style.width = this.playerPicWidth + "%";
+    this.playerPic.style.width = "auto";
+    this.playerElement.appendChild(this.playerPic);
+    // this.playerElement.innerHTLM = '<img src="./img/player.png" alt="" srcset="">';
 
     const gameBoard = document.getElementById("game");
     gameBoard.appendChild(this.playerElement);
@@ -231,16 +260,46 @@ class Player {
         break;
     }
   }
+
   shoot() {
-    console.log("shoot()");
+    //
   }
+  ///
+
+  // moveLeft() {
+  //   switch (true) {
+  //     case this.positionX <= -10:
+  //       this.obstacleElement.remove();
+  //       break;
+  //     default:
+  //       this.positionX -= 5;
+  //       this.obstacleElement.style.left = this.positionX + "%";
+  //       break;
+  //   }
+  // }
+
+  // moveShoot() {
+  //   switch (true) {
+  //     case this.positionX <= -10:
+  //       this.shootElement.remove();
+  //       break;
+  //       default:
+  //         this.positionX += 7;
+  //         this.shootElement.style.left = this.positionX + "%";
+  //         break;
+  //       }
+  //     }
+}
+
+class Shoot {
+  constructor() {}
 }
 
 class Obstacle {
   constructor() {
     this.positionX = 110;
     this.positionY = Math.floor(Math.random() * (90 - 0)) + 0;
-    this.width = 8;
+    this.width = 7;
     this.height = 10;
     this.obstacleElement = null;
     this.createDomElement();
@@ -252,6 +311,21 @@ class Obstacle {
     this.obstacleElement.style.bottom = this.positionY + "%";
     this.obstacleElement.style.width = this.width + "%";
     this.obstacleElement.style.height = this.height + "%";
+
+    this.obstaclePic = document.createElement("img");
+
+    let randomObstacle = Math.floor(Math.random() * (4 - 1)) + 1;
+    if (randomObstacle === 1) {
+      this.obstaclePic.src = "./img/eye.png";
+    } else if (randomObstacle === 2) {
+      this.obstaclePic.src = "./img/ghost.png";
+    } else if (randomObstacle === 3) { 
+      this.obstaclePic.src = "./img/spider.png";
+    }
+    this.obstaclePic.className = "obstacle-pic";
+    this.obstaclePic.style.width = this.obstaclePicWidth + "%";
+    this.obstaclePic.style.heigth = "auto";
+    this.obstacleElement.appendChild(this.obstaclePic);
 
     const gameBoard = document.getElementById("game");
     gameBoard.appendChild(this.obstacleElement);
