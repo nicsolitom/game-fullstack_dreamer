@@ -73,10 +73,12 @@ font-family: 'Titan One', cursive;
 .player {
   position: absolute;
   transition: 0.2s;
+  /* padding: 10px; */
 }
 
 #player-pic {
-  height: 130%;
+  height: 100%;
+  width: 110%;
 }
 
 .obstacle,

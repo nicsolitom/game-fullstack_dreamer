@@ -178,7 +178,7 @@ class Game {
     this.gameOverElement.className = "game-over";
     this.gameOverElement.style.width = "100%";
     this.gameOverElement.style.height = "100%";
-    this.gameOverElement.style.background = "url('./img/earth-3391040.jpeg')";
+    this.gameOverElement.style.background = "url('./img/earth-3391040.jpg')";
     this.gameOverElement.style.backgroundSize = "cover";
     this.gameOverElement.style.backgroundPosition = "center";
 
@@ -237,7 +237,7 @@ class Player {
   constructor() {
     this.positionX = 5;
     this.positionY = 45;
-    this.width = 10;
+    this.width = 14;
     this.height = 10;
     this.playerPicWidth = 10;
     this.playerPicHeight = 0;
