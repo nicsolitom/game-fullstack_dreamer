@@ -70,6 +70,17 @@ font-family: 'Titan One', cursive;
   bottom: 20%;
 }
 
+#lucidity-level {
+  z-index: 2;
+  position: absolute;
+  top: 1%;
+  right: 5%;
+  color: #ffffff;
+  font-family: "Comfortaa", cursive;
+  font-size: 1rem;
+
+}
+
 .player {
   position: absolute;
   transition: 0.2s;

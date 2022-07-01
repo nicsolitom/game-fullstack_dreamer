@@ -92,6 +92,11 @@ class Game {
       this.levelOneBg.style.left = this.positionX + "%";
     }, 100);
 
+    this.lucidityLevel = document.createElement("p");
+    this.lucidityLevel.id = "lucidity-level";
+    this.lucidityLevel.innerText = 'Lucidity ' + this.lucidity + '%'; 
+    gameBoard.appendChild(this.lucidityLevel);
+
     this.player = new Player();
     this.movementEventListeners();
 
@@ -134,6 +139,7 @@ class Game {
           clearInterval(moveGift);
           clearInterval(moveBgOne);
 
+          this.lucidityLevel.remove();
           this.player.playerElement.remove();
           this.levelOneBg.remove();
           this.obstaclesArr.forEach((obstacle) => {
@@ -157,7 +163,14 @@ class Game {
           this.player.positionY < gift.positionY + gift.height &&
           this.player.height + this.player.positionY > gift.positionY
         ) {
-          this.lucidity += 600;
+          if (this.lucidity < 100) {
+
+            this.lucidity++;
+            this.lucidityLevel.innerText = 'Lucidity ' + this.lucidity + '%';
+          }
+          else if (this.lucidity >= 100) {
+            console.log("You made it to next level");
+          }
           gift.giftElement.remove();
           
         }
