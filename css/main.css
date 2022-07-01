@@ -1,15 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Rammetto+One&family=Roboto:wght@300;400&family=Titan+One&display=swap");
 
 /* 
+Fonts avaliable:
 font-family: 'Comfortaa', cursive;
 font-family: 'Rammetto One', cursive;
 font-family: 'Roboto', sans-serif;
 font-family: 'Titan One', cursive;
 */
-
-/* body {
-    
-} */
 
 #game {
   position: relative;
@@ -27,19 +24,19 @@ font-family: 'Titan One', cursive;
   justify-content: center;
   text-align: center;
   font-weight: 700;
-  color: white;
+  color: #ffffff;
 }
 
 .intro > h1 {
-    font-family: "Titan One", cursive;
-    font-size: 3em;
-    margin-bottom: 5%;
+  font-family: "Titan One", cursive;
+  font-size: 5em;
+  margin-bottom: 5%;
 }
 
 .intro > p#intro-text {
-    font-family: "Comfortaa", cursive;
-    font-size: 1rem;
-    margin-bottom: 7%;
+  font-family: "Comfortaa", cursive;
+  font-size: 1rem;
+  margin-bottom: 7%;
 }
 
 #start-game-wrapper,
@@ -54,7 +51,6 @@ font-family: 'Titan One', cursive;
 
 #start-game-wrapper {
   align-items: center;
-  bottom: 5%;
 }
 
 #restart-game-wrapper {
@@ -67,40 +63,33 @@ font-family: 'Titan One', cursive;
   position: absolute;
   font-size: 1rem;
   background-color: #000000;
-  bottom: 20%;
   color: #ffffff;
   border-radius: 10rem;
   padding: 0.75rem 1.25rem;
   letter-spacing: 0.15rem;
+  bottom: 20%;
 }
-
 
 .player {
-    position: absolute;
-    transition: 0.2s;
+  position: absolute;
+  transition: 0.2s;
 }
 
-.shoot {
-    position: absolute;
-    background-color: aqua;
+#player-pic {
+  height: 130%;
 }
 
 .obstacle,
 .gift {
-    position: absolute;
-    transition: 0.5s;
-    overflow: hidden;
-}
-
-.gift {
-  /* background-color: green; */
+  position: absolute;
+  transition: 0.5s;
+  overflow: hidden;
 }
 
 .obstacle-pic,
 .gift-pic {
-    width: 100%;
-    height: 100%;
-    
+  width: 100%;
+  height: 100%;
 }
 
 #level-one-bg {
@@ -115,7 +104,7 @@ font-family: 'Titan One', cursive;
   justify-content: center;
   font-family: "Comfortaa", cursive;
   font-weight: 700;
-  color: white;
+  color: #ffffff;
 }
 
 .game-over > h1 {
@@ -128,8 +117,6 @@ font-family: 'Titan One', cursive;
   font-size: 1rem;
   margin-right: 2rem;
 }
-
-
 
 /* @media (min-width: 320px max-width: 480px) {
   .text {

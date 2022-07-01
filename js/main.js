@@ -254,6 +254,7 @@ class Player {
     this.playerElement.style.height = this.height + "%";
 
     this.playerPic = document.createElement("img");
+    this.playerPic.id = "player-pic"
     this.playerPic.src = "./img/player_small.png";
     this.playerPic.style.width = this.playerPicWidth + "%";
     this.playerPic.style.width = "auto";
